@@ -1,8 +1,8 @@
 namespace Fundamentos
 {
-    public partial class Form1 : Form
+    public partial class Form00 : Form
     {
-        public Form1()
+        public Form00()
         {
             InitializeComponent();
         }
