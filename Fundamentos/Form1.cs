@@ -17,6 +17,7 @@ namespace Fundamentos
             this.txtNombre.Location = new Point(70, 100);
             this.txtNombre.TextAlign = HorizontalAlignment.Center;
             this.BackColor=Color.YellowGreen;
+            this.btnPulsar.BackColor = Color.Red;
         }
     }
 }
