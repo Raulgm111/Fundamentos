@@ -66,6 +66,7 @@
             this.btnBorrarTodo.TabIndex = 15;
             this.btnBorrarTodo.Text = "Borrar Todo";
             this.btnBorrarTodo.UseVisualStyleBackColor = true;
+            this.btnBorrarTodo.Click += new System.EventHandler(this.btnBorrarTodo_Click);
             // 
             // btnEliminar
             // 
@@ -75,6 +76,7 @@
             this.btnEliminar.TabIndex = 14;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnInsertar
             // 
@@ -128,6 +130,7 @@
             this.btnSeleccionados.TabIndex = 18;
             this.btnSeleccionados.Text = "Seleccionados";
             this.btnSeleccionados.UseVisualStyleBackColor = true;
+            this.btnSeleccionados.Click += new System.EventHandler(this.btnSeleccionados_Click);
             // 
             // Form09ColeccionMultiplecs
             // 
