@@ -15,16 +15,40 @@ namespace Fundamentos
         public Form04DateTime()
         {
             InitializeComponent();
+            this.txtFecha.Text = DateTime.Now.ToString();
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void chckFecha_CheckedChanged(object sender, EventArgs e)
         {
-
+            DateTime fecha = DateTime.Parse(this.txtFecha.Text);
+            if(this.chckFecha.Checked == true)
+            {
+                this.txtFecha.Text = fecha.ToShortDateString();
+            }
+            else
+            {
+                this.txtFecha.Text = fecha.ToLongDateString();
+            }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void btnIncrementar_Click(object sender, EventArgs e)
         {
+            int incremento = int.Parse(this.txtIncremento.Text);
+            DateTime fecha =DateTime.Parse(this.txtFecha.Text);
 
+            if(this.rdbuttonDia.Checked == true)
+            {
+                fecha = fecha.AddDays(incremento); ;
+            }else if (this.rdbuttonMeses.Checked == true)
+            {
+                fecha = fecha.AddMonths(incremento);
+            }
+            else
+            {
+                fecha = fecha.AddYears(incremento);
+            }
+
+            this.txtFechaNueva.Text = fecha.ToString();
         }
     }
 }
