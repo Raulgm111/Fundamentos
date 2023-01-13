@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,12 @@ namespace Fundamentos
     {
         public Form11TiendaProductos()
         {
+            Stopwatch krono;
+
+
+
+
+
             InitializeComponent();
             this.listTienda.SelectionMode = SelectionMode.MultiExtended;
         }
@@ -74,7 +81,7 @@ namespace Fundamentos
         private void btnSubir_Click(object sender, EventArgs e)
         {
             int indice =this.listAlmacen.SelectedIndex;
-            string producto=    
+            string producto=this.listAlmacen.SelectedItem.ToString();
             this.listAlmacen.Items.RemoveAt(indice);
             this.listAlmacen.Items.Insert(indice-1, producto);
             this.listAlmacen.SelectedIndex=indice-1;
