@@ -26,22 +26,24 @@ namespace Fundamentos
         }
 
         private void btnDatos_Click(object sender, EventArgs e)
-        {
-            //int suma = 0;
-            //foreach (int indice in this.listNumeros.SelectedIndices)
-            //{
-            //    int numero = int.Parse(indice.ToString());
-            //    suma += numero;
-            //}
-            //this.txtSuma.Text = suma.ToString();
-
-            string indices = "";
+        {  
             int suma = 0;
-            foreach (int indice in this.listNumeros.SelectedIndices)
+            int pares = 0;
+            int impares = 0;
+            foreach (int indice in this.listNumeros.Items)
             {
-                indices += indice + ",";
-                int numeros=int.Parse(indices); 
-                suma += numeros;
+                suma += indice;
+                if(indice % 2 == 0)
+                {
+                    pares += indice;
+                    this.txtSumaPares.Text = pares.ToString();
+
+                }
+                else if(indice % 2 != 0)
+                {
+                    impares += indice;
+                    this.txtSumaImpares.Text = impares.ToString();
+                }
             }
             this.txtSuma.Text = suma.ToString();
         }
