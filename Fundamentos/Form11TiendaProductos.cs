@@ -15,7 +15,7 @@ namespace Fundamentos
     {
         public Form11TiendaProductos()
         {
-            Stopwatch krono;
+            //Stopwatch krono;
 
 
 
