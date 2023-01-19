@@ -23,6 +23,12 @@ namespace Fundamentos
         {
             Persona persona = new Persona();
             persona.Nombre = "Alumno";
+            persona.Domicilio=new Direccion("Calle Pez","Madrid",2850);
+            this.listDatos.Items.Add("Nombre: " + persona.Nombre);
+            this.listDatos.Items.Add("Direccion: "+persona.Domicilio.Calle);
+
+            this.listDatos.Items.Add("Direccion Vacaciones: " + persona.DomiciloVacaciones.Calle);
+
             persona.Apellidos = "Net Core";
             persona.Edad = 20;
             persona.Nacionalidad = Paises.España;

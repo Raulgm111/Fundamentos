@@ -10,6 +10,11 @@ namespace ProyectoClasess
     public class Persona
     {
 
+        public Persona()
+        {
+            this.DomiciloVacaciones = new Direccion("AA", "AAA", 1234);
+        }
+
         #region CAMPOS DE PROPIEDAD
 
         private TipoGenero _Genero;
@@ -18,6 +23,11 @@ namespace ProyectoClasess
         #endregion
 
         #region Propiedades
+
+        public Direccion Domicilio { get; set; }
+
+        public Direccion DomiciloVacaciones { get; set; }
+
 
         public TipoGenero Genero
         {
