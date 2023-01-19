@@ -16,20 +16,24 @@ namespace Fundamentos
     {
         String[] meses = new String[12] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
         Random random = new Random();
-        ArrayList temperaturas = new ArrayList();
+        List<int> temperaturas;
         public Form17TemperaturasMeses()
         {
             InitializeComponent();
             this.listMeses.SelectionMode = SelectionMode.MultiExtended;
+            this.temperaturas = new List<int>();
         }
 
         private void btnGenerarMeses_Click(object sender, EventArgs e)
         {
+            this.temperaturas.Clear();
+            this.listMeses.Items.Clear();
             for (int i= 0; i < meses.Length; i++)
             {
                 int num = random.Next(-20, 50);
                 this.temperaturas.Add(num); 
                 this.listMeses.Items.Add(meses[0+i]+" : "+num.ToString());
+
             }
            
 
@@ -37,14 +41,21 @@ namespace Fundamentos
 
         private void btnMostrarDatos_Click(object sender, EventArgs e)
         {
-            for(int i=0; i<this.meses.Length; i++)
+            int maxima=0;
+            int minima = 0;
+            int media = 0;
+            int suma = 0;
+            foreach(int temp in this.temperaturas)
             {
-                
-                int indice = this.listMeses.SelectedIndices[i];
-                temperaturas.Add(indice);
-                string eee = "Hola";
+                maxima=Math.Max(maxima, temp);
+                minima=Math.Min(minima, temp);
+                suma += temp;
 
             }
+            media = suma / this.temperaturas.Count;
+            this.txtTemperaturaMaxima.Text=maxima.ToString();
+            this.txtTemperaturaMinima.Text=minima.ToString();
+            this.txtMediaAnual.Text=media.ToString();
         }
     }
 }
