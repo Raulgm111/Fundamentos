@@ -116,6 +116,7 @@
             this.listMeses.Name = "listMeses";
             this.listMeses.Size = new System.Drawing.Size(139, 274);
             this.listMeses.TabIndex = 11;
+            this.listMeses.SelectedIndexChanged += new System.EventHandler(this.listMeses_SelectedIndexChanged);
             // 
             // label1
             // 

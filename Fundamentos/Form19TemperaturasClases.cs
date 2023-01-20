@@ -7,52 +7,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoClasess;
 
 namespace Fundamentos
 {
     public partial class Form19TemperaturasClases : Form
     {
-        String[] meses = new String[12] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
-        Random random = new Random();
-        List<int> temperaturas;
+        List<TemperaturaMeses> meses;
         public Form19TemperaturasClases()
         {
             InitializeComponent();
-            this.listMeses.SelectionMode = SelectionMode.MultiExtended;
-            this.temperaturas = new List<int>();
+            this.meses = new List<TemperaturaMeses>();
         }
 
         private void btnGenerarMeses_Click(object sender, EventArgs e)
         {
-                this.temperaturas.Clear();
-                this.listMeses.Items.Clear();
-                for (int i = 0; i < meses.Length; i++)
-                {
-                    int num = random.Next(-20, 50);
-                    this.temperaturas.Add(num);
-                    this.listMeses.Items.Add(meses[0 + i] + " : " + num.ToString());
-
-                }
-
+            this.listMeses.Items.Clear();
+            this.meses.Clear();
+            Random random = new Random();
+            DateTime tiempo = DateTime.Parse("01/01/2023");
+            for(int i = 1; i <= 12; i++)
+            {
+                TemperaturaMeses mes = new TemperaturaMeses();
+                string nombremes = tiempo.ToString("MMMM");
+                mes.NombreMes = nombremes.ToUpper();
+                mes.TemperaturaMaxima = random.Next(10, 50);
+                mes.TemperaturaMinima=random.Next(-10, 9);
+                this.meses.Add(mes);
+                this.listMeses.Items.Add(nombremes);
+                tiempo = tiempo.AddMonths(1);
+            }
         }
 
         private void btnMostrarDatos_Click(object sender, EventArgs e)
         {
-            int maxima = 0;
-            int minima = 0;
-            int media = 0;
-            int suma = 0;
-            foreach (int temp in this.temperaturas)
-            {
-                maxima = Math.Max(maxima, temp);
-                minima = Math.Min(minima, temp);
-                suma += temp;
 
+        }
+
+        private void listMeses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(this.listMeses.SelectedIndex != -1)
+            {
+                int indice = this.listMeses.SelectedIndex;
+                TemperaturaMeses mes = this.meses[indice];
+                this.txtTemperaturaMaxima.Text = mes.TemperaturaMaxima.ToString();
+                this.txtTemperaturaMinima.Text = mes.TemperaturaMinima.ToString();
+                this.txtMediaAnual.Text = mes.GetTemperaturaMedia().ToString();
             }
-            media = suma / this.temperaturas.Count;
-            this.txtTemperaturaMaxima.Text = maxima.ToString();
-            this.txtTemperaturaMinima.Text = minima.ToString();
-            this.txtMediaAnual.Text = media.ToString();
         }
     }
 }

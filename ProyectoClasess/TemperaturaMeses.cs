@@ -9,40 +9,21 @@ namespace ProyectoClasess
 
     public class TemperaturaMeses
     {
-        Random random = new Random();
-        private int _Temp1;
-        private int _Temp2;
-        public int Temp1 {
-            get
-            {
-                return _Temp1;
-            }
-            set
-            {
-                _Temp1 = random.Next(-20, 50);
-            }
-        }
-        public int Temp2
+        public TemperaturaMeses() { }
+
+        public TemperaturaMeses(int maxima, int minima)
         {
-            get
-            {
-                return _Temp2;
-            }
-            set
-            {
-                _Temp2 = random.Next(-20, 50);
-            }
+            this.TemperaturaMaxima = maxima;
+            this.TemperaturaMinima = minima;
         }
+        public string NombreMes { get; set; }
+        public int TemperaturaMaxima { get; set; }
+        public int TemperaturaMinima { get; set; }
 
-        //public int GetMaximaTmeperatura(int temp1,int temp2)
-        //{
-        //    if (temp1 > temp2) {
-        //        return this.Temp1;
-        //    }
-
-        //}
-
-
+        public float GetTemperaturaMedia()
+        {
+            return (this.TemperaturaMaxima + this.TemperaturaMinima) / 2;
+        }
 
     }
 }
