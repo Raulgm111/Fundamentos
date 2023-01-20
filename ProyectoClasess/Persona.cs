@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,20 @@ namespace ProyectoClasess
     public enum Paises { España,Italia,Francia,Alemania,Portugal}
     public class Persona
     {
-
+        #region Constructor
         public Persona()
         {
+            Debug.WriteLine("Constructor PERSONA vacio");
             this.DomiciloVacaciones = new Direccion("AA", "AAA", 1234);
         }
+
+        public Persona(string nombre,string apellidos)
+        {
+            Debug.WriteLine("Constrcutor PERSONA dos parametros");
+            this.Nombre = nombre;
+            this.Apellidos = apellidos;
+        }
+        #endregion
 
         #region CAMPOS DE PROPIEDAD
 

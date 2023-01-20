@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -42,6 +43,21 @@ namespace Fundamentos
             this.listDatos.Items.Add(persona.Nombre + " " + persona.Apellidos + ", Edad: " + persona.Edad);
             this.listDatos.Items.Add(persona.Genero + ", " + persona.Nacionalidad);
             this.listDatos.Items.Add(persona.GetNombreCompleto(true));
+        }
+
+        private void btnCrearEmpleado_Click(object sender, EventArgs e)
+        {
+            Empleado empleado = new Empleado();
+            empleado.Nombre = "Emple";
+            empleado.Apellidos = "Ado";
+            this.listDatos.Items.Add(empleado.GetNombreCompleto()+", Salario: "+ empleado.GetSalarioMinimo());
+            this.listDatos.Items.Add(empleado.GetNombreCompleto() + ", Vacaciones: " + empleado.GetDiasVaciones());
+            Director director = new Director();
+            director.Nombre = "Dire";
+            director.Apellidos = "Tor";
+            this.listDatos.Items.Add(director.GetNombreCompleto()+", Salario: "+director.GetSalarioMinimo());
+            this.listDatos.Items.Add(director.GetNombreCompleto() + ", Vacaciones: " + director.GetDiasVaciones());
+
         }
     }
 }
