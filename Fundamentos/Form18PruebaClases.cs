@@ -57,7 +57,7 @@ namespace Fundamentos
             director.Apellidos = "Tor";
             this.listDatos.Items.Add(director.GetNombreCompleto()+", Salario: "+director.GetSalarioMinimo());
             this.listDatos.Items.Add(director.GetNombreCompleto() + ", Vacaciones: " + director.GetDiasVaciones());
-
+            this.listDatos.Items.Add(director.ToString());
         }
     }
 }

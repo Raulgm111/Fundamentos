@@ -29,7 +29,7 @@ namespace ProyectoClasess
             return this.SalarioMinimo;
         }
 
-        public int GetDiasVaciones()
+        public virtual int GetDiasVaciones()
         {
             Debug.WriteLine("GetVacaciones() EMPLEADO");
             return 22;

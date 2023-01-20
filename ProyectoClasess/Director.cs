@@ -14,10 +14,16 @@ namespace ProyectoClasess
             this.SalarioMinimo += 200;
         }
         //OVERRIDE
-        public new int GetDiasVaciones()
+        public override int GetDiasVaciones()
         {
             Debug.WriteLine("GetVacaciones() DIRECTOR");
-            return 30;
+            int vacacionesEmpleado = base.GetDiasVaciones();
+            return vacacionesEmpleado + 8;
+        }
+
+        public override string ToString()
+        {
+            return this.GetNombreCompleto() + ", Salario: " + this.SalarioMinimo + ", Vaciones: " + this.GetDiasVaciones();
         }
     }
 }
