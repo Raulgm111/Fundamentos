@@ -30,8 +30,8 @@
         {
             this.txtAños = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnGuardarDato = new System.Windows.Forms.Button();
-            this.btnLeerDato = new System.Windows.Forms.Button();
+            this.btnGuardarRegistros = new System.Windows.Forms.Button();
+            this.btnLeerRegistro = new System.Windows.Forms.Button();
             this.txtRaza = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -57,23 +57,25 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Años";
             // 
-            // btnGuardarDato
+            // btnGuardarRegistros
             // 
-            this.btnGuardarDato.Location = new System.Drawing.Point(300, 225);
-            this.btnGuardarDato.Name = "btnGuardarDato";
-            this.btnGuardarDato.Size = new System.Drawing.Size(148, 50);
-            this.btnGuardarDato.TabIndex = 23;
-            this.btnGuardarDato.Text = "Guardar Dato";
-            this.btnGuardarDato.UseVisualStyleBackColor = true;
+            this.btnGuardarRegistros.Location = new System.Drawing.Point(300, 225);
+            this.btnGuardarRegistros.Name = "btnGuardarRegistros";
+            this.btnGuardarRegistros.Size = new System.Drawing.Size(148, 50);
+            this.btnGuardarRegistros.TabIndex = 23;
+            this.btnGuardarRegistros.Text = "Guardar Registros";
+            this.btnGuardarRegistros.UseVisualStyleBackColor = true;
+            this.btnGuardarRegistros.Click += new System.EventHandler(this.btnGuardarRegistros_Click);
             // 
-            // btnLeerDato
+            // btnLeerRegistro
             // 
-            this.btnLeerDato.Location = new System.Drawing.Point(300, 168);
-            this.btnLeerDato.Name = "btnLeerDato";
-            this.btnLeerDato.Size = new System.Drawing.Size(148, 51);
-            this.btnLeerDato.TabIndex = 22;
-            this.btnLeerDato.Text = "Leer Dato";
-            this.btnLeerDato.UseVisualStyleBackColor = true;
+            this.btnLeerRegistro.Location = new System.Drawing.Point(300, 168);
+            this.btnLeerRegistro.Name = "btnLeerRegistro";
+            this.btnLeerRegistro.Size = new System.Drawing.Size(148, 51);
+            this.btnLeerRegistro.TabIndex = 22;
+            this.btnLeerRegistro.Text = "Leer Registros";
+            this.btnLeerRegistro.UseVisualStyleBackColor = true;
+            this.btnLeerRegistro.Click += new System.EventHandler(this.btnLeerRegistro_Click);
             // 
             // txtRaza
             // 
@@ -124,6 +126,7 @@
             this.listMascotas.Name = "listMascotas";
             this.listMascotas.Size = new System.Drawing.Size(198, 184);
             this.listMascotas.TabIndex = 28;
+            this.listMascotas.SelectedIndexChanged += new System.EventHandler(this.listMascotas_SelectedIndexChanged);
             // 
             // btnNuevaMascota
             // 
@@ -133,6 +136,7 @@
             this.btnNuevaMascota.TabIndex = 29;
             this.btnNuevaMascota.Text = "Nueva Mascota";
             this.btnNuevaMascota.UseVisualStyleBackColor = true;
+            this.btnNuevaMascota.Click += new System.EventHandler(this.btnNuevaMascota_Click);
             // 
             // Form24ColeccionXMLMascotas
             // 
@@ -144,8 +148,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtAños);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnGuardarDato);
-            this.Controls.Add(this.btnLeerDato);
+            this.Controls.Add(this.btnGuardarRegistros);
+            this.Controls.Add(this.btnLeerRegistro);
             this.Controls.Add(this.txtRaza);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
@@ -161,8 +165,8 @@
 
         private TextBox txtAños;
         private Label label3;
-        private Button btnGuardarDato;
-        private Button btnLeerDato;
+        private Button btnGuardarRegistros;
+        private Button btnLeerRegistro;
         private TextBox txtRaza;
         private Label label2;
         private TextBox txtNombre;
