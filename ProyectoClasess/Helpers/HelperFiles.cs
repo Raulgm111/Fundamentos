@@ -16,7 +16,7 @@ namespace ProyectoClasess.Helpers
         //UTILIZAN LA CLASE task PARA SU DECLARACION
         //SI ES UN void SIMPLEMETE LA PALABRA task
         //SI ES UN return, SE UTILIZA Task<Tipo>
-        public async Task<string> ReadFileAsync(string path)
+        public static async Task<string> ReadFileAsync(string path)
         {
             FileInfo file = new FileInfo(path);
             //PARA LEER VAMOS A UTILIZAR using
@@ -36,7 +36,7 @@ namespace ProyectoClasess.Helpers
         //METODO PARA ESCRIBIR UN FILE
         //ESTE METODO ES DE ACCION (void)
         //NO DEVUELVE NADA
-        public async Task WriteFileAsync(string path,string data)
+        public static async Task WriteFileAsync(string path,string data)
         {
             FileInfo file = new FileInfo(path);
             using (TextWriter writer = file.CreateText())

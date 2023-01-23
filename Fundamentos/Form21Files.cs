@@ -28,7 +28,7 @@ namespace Fundamentos
             if(ofd.ShowDialog() == DialogResult.OK)
             {
                 string path = ofd.FileName;
-                string contenido = await this.helper.ReadFileAsync(path);
+                string contenido = await HelperFiles.ReadFileAsync(path);
                 this.txtContenido.Text=contenido;
                     //DIBUJAMOS LOS DATOS EN UN LISTBOX
                     this.SetStringNombres(contenido);
@@ -43,7 +43,7 @@ namespace Fundamentos
             {
                 string path=save.FileName;
                 string contenido = this.GetStringNombres();
-                await this.helper.WriteFileAsync(path, contenido);
+                await HelperFiles.WriteFileAsync(path, contenido);
                 MessageBox.Show("Datos guardados");
             }
         }
