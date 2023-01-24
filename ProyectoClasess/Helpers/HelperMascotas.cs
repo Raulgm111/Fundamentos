@@ -73,7 +73,7 @@ namespace ProyectoClasess.Helpers
         public byte[] ConvertirImagen(string path)
         {
             byte[] imagenes = System.IO.File.ReadAllBytes(path);
-            return imagenes;
+            return imagenes;  
         }
     }
 }
