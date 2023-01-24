@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProyectoClasess.Models;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO;
 
 namespace ProyectoClasess.Helpers
 {
@@ -65,6 +68,12 @@ namespace ProyectoClasess.Helpers
         {
             string data=this.GetMascotasSring();
             await HelperFiles.WriteFileAsync(path, data);
+        }
+
+        public byte[] ConvertirImagen(string path)
+        {
+            byte[] imagenes = System.IO.File.ReadAllBytes(path);
+            return imagenes;
         }
     }
 }
