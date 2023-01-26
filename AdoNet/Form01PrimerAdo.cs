@@ -69,12 +69,15 @@ namespace AdoNet
             //DEBEMOS TENER UNA CONEXION ABIERTA
             //EJECUTAMOS LA CONSULTA Y EXTRAEMOS EL READER
             this.reader = this.com.ExecuteReader();
-            //DIBUJAMOS LA PRIMERA COLUMNA DE LA TABLA
-            string columna = this.reader.GetName(0);
-            //DIBUJAMOS EL TIPO DE LA PRIMERA COLUMNA DE LA TABLA
-            string tipo=this.reader.GetDataTypeName(0);
-            this.listColumnas.Items.Add(columna);
-            this.listTipoDato.Items.Add(tipo);
+            for(int i = 0; i < this.reader.FieldCount; i++)
+            {
+                //DIBUJAMOS LA PRIMERA COLUMNA DE LA TABLA
+                string columna = this.reader.GetName(i);
+                //DIBUJAMOS EL TIPO DE LA PRIMERA COLUMNA DE LA TABLA
+                string tipo = this.reader.GetDataTypeName(i);
+                this.listColumnas.Items.Add(columna);
+                this.listTipoDato.Items.Add(tipo);
+            }
             //PARA ACCCEDER A LOS DATOS DEBEMOS LEER
             while (this.reader.Read())
             {
@@ -82,6 +85,7 @@ namespace AdoNet
                 string apellido = this.reader["APELLIDO"].ToString();
                 this.listApellidos.Items.Add(apellido);
             }
+            this.reader.Close();
         }
     }
 }
