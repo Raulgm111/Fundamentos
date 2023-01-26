@@ -47,12 +47,27 @@ namespace AdoNet
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             int inscripcion = int.Parse(this.txtInscripcion.Text);
-            string sql = "DELETE FROM ENFERMO WHERE INSCRIPCION=" + inscripcion;
+            //string sql = "DELETE FROM ENFERMO WHERE INSCRIPCION=" + inscripcion;
+            string sql = "DELETE FROM ENFERMO WHERE INSCRIPCION=@INSCRIPCION";
+            //CREAMOS UN NUEVO OBJETO PARAMETER
+            SqlParameter pamisnscripcion = new SqlParameter("@INSCRIPCION",inscripcion);
+            //pamisnscripcion.ParameterName = "@INSCRIPCION";
+            //pamisnscripcion.Value = inscripcion;
+            ////TIPO DE DATO
+            //pamisnscripcion.DbType = DbType.Int32;
+            ////pamisnscripcion.SqlDbType = SqlDbType.Int;
+            ////DIRECCION NO ES NECESARIO A NO SER QUE DESEEMOS CAMBIAR
+            ////SU VALOR POR DEFECTO(Input)
+            //pamisnscripcion.Direction=ParameterDirection.Input;
+            ////DEBEMOS AÑADIR A LA COLECCION DEL COMMAND LOS PARAMETROS
+            this.com.Parameters.Add(pamisnscripcion);
+
             this.com.CommandType= CommandType.Text;
             this.com.CommandText= sql;
             this.cn.Open();
             int eliminados = this.com.ExecuteNonQuery();
             this.cn.Close();
+            this.com.Parameters.Clear();
             MessageBox.Show("Enfermos eliminados: " + eliminados);
             this.LoadEnfermos();
         }
