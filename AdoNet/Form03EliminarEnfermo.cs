@@ -46,7 +46,15 @@ namespace AdoNet
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            int inscripcion = int.Parse(this.txtInscripcion.Text);
+            string sql = "DELETE FROM ENFERMO WHERE INSCRIPCION=" + inscripcion;
+            this.com.CommandType= CommandType.Text;
+            this.com.CommandText= sql;
+            this.cn.Open();
+            int eliminados = this.com.ExecuteNonQuery();
+            this.cn.Close();
+            MessageBox.Show("Enfermos eliminados: " + eliminados);
+            this.LoadEnfermos();
         }
     }
 }
