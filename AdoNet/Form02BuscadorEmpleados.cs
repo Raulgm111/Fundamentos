@@ -55,7 +55,7 @@ namespace AdoNet
         private void btnBuscarOficio_Click(object sender, EventArgs e)
         {
             string oficio=this.txtOficio.Text;
-            string sql="SELECT * FROM EMP WHERE OFICIO="+"'"+oficio+"'";
+            string sql="SELECT * FROM EMP WHERE OFICIO='"+oficio+"'";
             this.com.Connection=this.cn;
             this.com.CommandType=CommandType.Text;
             this.com.CommandText=sql;
