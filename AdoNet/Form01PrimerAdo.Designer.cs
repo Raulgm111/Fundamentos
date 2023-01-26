@@ -48,6 +48,7 @@
             this.btnConectar.TabIndex = 0;
             this.btnConectar.Text = "Conectar";
             this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
             // btnDesconectar
             // 
@@ -57,6 +58,7 @@
             this.btnDesconectar.TabIndex = 1;
             this.btnDesconectar.Text = "Desconectar";
             this.btnDesconectar.UseVisualStyleBackColor = true;
+            this.btnDesconectar.Click += new System.EventHandler(this.btnDesconectar_Click);
             // 
             // btnLeerDatos
             // 
@@ -123,12 +125,10 @@
             // 
             // lblMensaje
             // 
-            this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Location = new System.Drawing.Point(138, 309);
+            this.lblMensaje.Location = new System.Drawing.Point(281, 271);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(64, 15);
+            this.lblMensaje.Size = new System.Drawing.Size(566, 55);
             this.lblMensaje.TabIndex = 9;
-            this.lblMensaje.Text = "lblMensaje";
             // 
             // Form01PrimerAdo
             // 
