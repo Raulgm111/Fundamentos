@@ -56,7 +56,7 @@
             this.listDepartamentos.ItemHeight = 15;
             this.listDepartamentos.Location = new System.Drawing.Point(98, 58);
             this.listDepartamentos.Name = "listDepartamentos";
-            this.listDepartamentos.Size = new System.Drawing.Size(199, 184);
+            this.listDepartamentos.Size = new System.Drawing.Size(290, 244);
             this.listDepartamentos.TabIndex = 1;
             // 
             // btnInsertar
@@ -67,6 +67,7 @@
             this.btnInsertar.TabIndex = 2;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // btnModificar
             // 
@@ -76,6 +77,7 @@
             this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -85,6 +87,7 @@
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtId
             // 
