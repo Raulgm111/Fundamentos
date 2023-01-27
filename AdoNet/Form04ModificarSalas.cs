@@ -29,7 +29,7 @@ namespace AdoNet
         }
         private void LoadSalas()
         {
-            string sql = "SELECT * FROM SALA";
+            string sql = "SELECT DISTINCT NOMBRE FROM SALA";
             this.com.CommandType = CommandType.Text;
             this.com.CommandText = sql;
             this.cn.Open();
@@ -46,14 +46,14 @@ namespace AdoNet
 
         private void btnModificarSalas_Click(object sender, EventArgs e)
         {
-            string sala = this.txtxNuevoNombre.Text;
-            int indice = this.listSalas.SelectedIndex;
 
-            string sql = "UPDATE SALA SET NOMBRE=(SELECT NOMBRE FROM SALA WHERE SALA.NOMBRE=@NOMBRE)";
-            SqlParameter pamisala = new SqlParameter("@NOMBRE", this.listSalas.Items[indice]);
-            SqlParameter pamisala2 = new SqlParameter("@NOMBRE", sala);
-            this.com.Parameters.Add(pamisala);
-            this.com.Parameters.Add(pamisala2);
+            string sql = "UPDATE SALA SET NOMBRE=@NEWNAME WHERE NOMBRE=@OLDNAME";
+            string newname = this.txtxNuevoNombre.Text;
+            string oldname = this.listSalas.SelectedItem.ToString();
+            SqlParameter panew= new SqlParameter("@NEWNAME", newname);
+            SqlParameter paold = new SqlParameter("@OLDNAME", oldname);
+            this.com.Parameters.Add(panew);
+            this.com.Parameters.Add(paold);
             this.com.CommandType = CommandType.Text;
             this.com.CommandText = sql;
             this.cn.Open();
