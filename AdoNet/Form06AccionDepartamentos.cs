@@ -20,6 +20,10 @@ namespace AdoNet
         {
             InitializeComponent();
             this.repo = new RepositoryDepartamentos();
+            this.GetDepartamentos();
+        }
+        private void GetDepartamentos()
+        {
             this.departamentos = this.repo.GetDepartamentos();
             foreach (Departamento departamento in this.departamentos)
             {
@@ -32,6 +36,8 @@ namespace AdoNet
             string nombre=this.txtNombre.Text;
             string localidad = this.txtLocalidad.Text;
             this.repo.InsertDepartamentos(id, nombre, localidad);
+            this.listDepartamentos.Items.Clear();
+            this.GetDepartamentos();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -40,12 +46,16 @@ namespace AdoNet
             string nombre = this.txtNombre.Text;
             string localidad = this.txtLocalidad.Text;
             this.repo.UpdateDepartamentos(id, nombre, localidad);
+            this.listDepartamentos.Items.Clear();
+            this.GetDepartamentos();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             int id = int.Parse(this.txtId.Text);
             this.repo.DeleteDepartamento(id);
+            this.listDepartamentos.Items.Clear();
+            this.GetDepartamentos();
         }
     }
 }
