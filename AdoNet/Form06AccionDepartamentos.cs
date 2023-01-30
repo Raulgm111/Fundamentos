@@ -57,5 +57,19 @@ namespace AdoNet
             this.listDepartamentos.Items.Clear();
             this.GetDepartamentos();
         }
+
+        private void listDepartamentos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (this.listDepartamentos.SelectedItems.Count != 0)
+            //{
+            //    ListViewItem it = this.listDepartamentos.SelectedItems[0];
+            //    int idDepartamento = int.Parse(it.Text);
+            //    Departamento departamento = this.repo.FindDepartamento(idDepartamento);
+            //    this.txtId.Text = departamento.IdDepartamento.ToString();
+            //    this.txtNombre.Text = departamento.Nombre;
+            //    this.txtLocalidad.Text = departamento.Localidad;
+            //}
+
+        }
     }
 }

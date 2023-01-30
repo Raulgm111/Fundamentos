@@ -58,6 +58,7 @@
             this.listDepartamentos.Name = "listDepartamentos";
             this.listDepartamentos.Size = new System.Drawing.Size(290, 244);
             this.listDepartamentos.TabIndex = 1;
+            this.listDepartamentos.SelectedIndexChanged += new System.EventHandler(this.listDepartamentos_SelectedIndexChanged);
             // 
             // btnInsertar
             // 

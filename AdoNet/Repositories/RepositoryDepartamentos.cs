@@ -46,6 +46,26 @@ namespace AdoNet.Repositories
             this.cn.Close();
             return departamentos;
         }
+        public Departamento FindDepartamento(int id)
+        {
+            string sql = "SELECT * FROM DEPT WHERE DEPT_NO=@NUMERO";
+            SqlParameter pamid = new SqlParameter("@NUMERO", id);
+            this.com.Parameters.Add(pamid);
+            this.com.CommandType = CommandType.Text;
+            this.com.CommandText = sql;
+            this.cn.Open();
+            this.reader = this.com.ExecuteReader();
+            this.reader.Read();
+            Departamento dept = new Departamento();
+            dept.IdDepartamento = int.Parse(this.reader["DEPT_NO"].ToString());
+            dept.Nombre = this.reader["DNOMBRE"].ToString();
+            dept.Localidad = this.reader["LOC"].ToString();
+            this.reader.Close();
+            this.cn.Close();
+            this.com.Parameters.Clear();
+            return dept;
+        }
+
 
         public int DeleteDepartamento(int id)
         {
@@ -78,9 +98,23 @@ namespace AdoNet.Repositories
             this.com.Parameters.Clear();
             return modificados;
         }
+        private int GetMaxIdDepartamento()
+        {
+            string sql = "SELECT MAX(DEPT_NO) + 1 AS MAXIMO FROM DEPT";
+            this.com.CommandType = CommandType.Text;
+            this.com.CommandText = sql;
+            this.cn.Open();
+            //SI LA CONSULTA CONTIENE SOLAMENTE UNA FILA Y UN DATO        //NO ES NECESARIO UN READER, PODEMOS UTILIZAR EL METODO        //ExecuteScalar()
+            int maximo = Convert.ToInt32(this.com.ExecuteScalar());
+            this.cn.Close();
+            return maximo;
+        }
+
+
 
         public int InsertDepartamentos(int id,string nombre,string localidad)
         {
+            //int id = this.GetMaxIdDepartamento();
             string sql = "INSERT INTO DEPT VALUES (@NUM,@NOM,@LOC)";
             SqlParameter pamnum = new SqlParameter("@NUM", id);
             SqlParameter pamnom = new SqlParameter("@NOM", nombre);
