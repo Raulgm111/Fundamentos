@@ -95,11 +95,12 @@
             this.btnInsertar.TabIndex = 6;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(420, 54);
+            this.label4.Location = new System.Drawing.Point(299, 54);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 15);
             this.label4.TabIndex = 7;
@@ -109,9 +110,9 @@
             // 
             this.listDepartamentos.FormattingEnabled = true;
             this.listDepartamentos.ItemHeight = 15;
-            this.listDepartamentos.Location = new System.Drawing.Point(420, 72);
+            this.listDepartamentos.Location = new System.Drawing.Point(299, 72);
             this.listDepartamentos.Name = "listDepartamentos";
-            this.listDepartamentos.Size = new System.Drawing.Size(254, 199);
+            this.listDepartamentos.Size = new System.Drawing.Size(438, 199);
             this.listDepartamentos.TabIndex = 8;
             // 
             // Form08MensajesServidor
