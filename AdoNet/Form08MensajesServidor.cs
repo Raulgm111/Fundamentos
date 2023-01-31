@@ -3,14 +3,32 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace AdoNet
 {
+    #region PROCEDIMINETOS USADOS
+//    CREATE PROCEDURE SP_DEPARTAMENTOS
+//    AS
+
+//    SELECT* FROM DEPT
+//GO
+
+//alter PROCEDURE SP_INSERT_DEPARTAMENTO
+//(@DEPARTAMETOCOD INT,
+//@NOMBREHOSP NVARCHAR(50),
+// @LOCALIDADHOSP NVARCHAR(50))
+//AS
+//INSERT INTO DEPT VALUES
+//        (@DEPARTAMETOCOD, @NOMBREHOSP, @LOCALIDADHOSP)
+//GO
+    #endregion
     public partial class Form08MensajesServidor : Form
     {
         SqlConnection cn;
@@ -59,12 +77,11 @@ namespace AdoNet
             this.com.CommandType = CommandType.StoredProcedure;
             this.com.CommandText = "SP_INSERT_DEPARTAMENTO";
             this.cn.Open();
-            this.reader = this.com.ExecuteReader();
-            //this.listDepartamentos.Items.Clear();
-            this.reader.Close();
+            int insertados = this.com.ExecuteNonQuery();
             this.cn.Close();
             this.com.Parameters.Clear();
             this.LoadDepartamentos();
+            MessageBox.Show("Registro insertado "+ insertados);
         }
     }
 }
