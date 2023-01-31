@@ -14,19 +14,36 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 namespace AdoNet
 {
     #region PROCEDIMINETOS USADOS
-//    CREATE PROCEDURE SP_DEPARTAMENTOS
-//    AS
+    //    CREATE PROCEDURE SP_DEPARTAMENTOS
+    //    AS
 
-//    SELECT* FROM DEPT
-//GO
+    //    SELECT* FROM DEPT
+    //GO
 
-//alter PROCEDURE SP_INSERT_DEPARTAMENTO
+    //alter PROCEDURE SP_INSERT_DEPARTAMENTO
+    //(@DEPARTAMETOCOD INT,
+    //@NOMBREHOSP NVARCHAR(50),
+    // @LOCALIDADHOSP NVARCHAR(50))
+    //AS
+    //INSERT INTO DEPT VALUES
+    //        (@DEPARTAMETOCOD, @NOMBREHOSP, @LOCALIDADHOSP)
+    //GO
+
+//    alter PROCEDURE SP_INSERT_DEPARTAMENTO
 //(@DEPARTAMETOCOD INT,
 //@NOMBREHOSP NVARCHAR(50),
 // @LOCALIDADHOSP NVARCHAR(50))
 //AS
+//--NO QUEREMOS LOCALIDADES EN TERUEL
+//IF(@LOCALIDADHOSP= 'TERUEL')
+//BEGIN
+//    PRINT 'TERUEL NO EXISTE'
+//END
+//ELSE BEGIN
 //INSERT INTO DEPT VALUES
 //        (@DEPARTAMETOCOD, @NOMBREHOSP, @LOCALIDADHOSP)
+
+//        END
 //GO
     #endregion
     public partial class Form08MensajesServidor : Form
@@ -42,7 +59,13 @@ namespace AdoNet
             this.cn = new SqlConnection(connectionString);
             this.com = new SqlCommand();
             this.com.Connection = cn;
+            this.cn.InfoMessage += Cn_InfoMessage;
             this.LoadDepartamentos();
+        }
+
+        private void Cn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
+        {
+            this.lblMensaje.Text = e.Message;
         }
 
         private void LoadDepartamentos()
@@ -65,6 +88,7 @@ namespace AdoNet
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
+            this.lblMensaje.Text = "";
             int id = int.Parse(this.txtId.Text);
             string nombre = this.txtNombre.Text;
             string localidad=this.txtLocalidad.Text;
