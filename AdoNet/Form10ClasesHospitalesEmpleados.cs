@@ -1,4 +1,5 @@
-﻿using AdoNet.Repositories;
+﻿using AdoNet.Models;
+using AdoNet.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +32,19 @@ namespace AdoNet
         }
         private void comboHospitales_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(this.comboHospitales.SelectedIndex != -1)
+            {
+                string nombreHospital = this.comboHospitales.SelectedItem.ToString();
+                DatosHospital datos= this.repo.GetDatosHospital(nombreHospital);
+                this.listEmpleados.Items.Clear();
+                foreach(EmpleadoHospital empleado in datos.Empleados)
+                {
+                    this.listEmpleados.Items.Add(empleado.Apellido + " - " + empleado.Salario);
+                }
+                this.txtSuma.Text=datos.SumaSalarial.ToString();
+                this.txtMedia.Text = datos.MediaSalarial.ToString();
+                this.txtPersonas.Text = datos.Personas.ToString();
+            }
         }
     }
 }
