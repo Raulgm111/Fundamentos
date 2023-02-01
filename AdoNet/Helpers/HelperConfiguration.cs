@@ -18,5 +18,15 @@ namespace AdoNet.Helpers
                 config["SqlHospital"];
             return connectionString;
         }
+
+        public static string GetConnectionString2()
+        {
+            IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("config.json", true, true);
+            IConfigurationRoot config = builder.Build();
+
+            string connectionString =
+                config["SqlPersonajes"];
+            return connectionString;
+        }
     }
 }
