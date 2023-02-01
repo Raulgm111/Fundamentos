@@ -111,5 +111,99 @@ namespace AdoNet.Repositories
             this.com.Parameters.Clear();
             return datos;
         }
+
+        public List<string> LoadOficios()
+        {
+            this.com.CommandType = CommandType.StoredProcedure;
+            this.com.CommandText = "SP_OFICIO";
+            List<string> oficios = new List<string>();
+            this.cn.Open();
+            this.reader = this.com.ExecuteReader();
+            while (this.reader.Read())
+            {
+                string oficio = this.reader["OFICIO"].ToString();
+                oficios.Add(oficio);
+            }
+            this.reader.Close();
+            this.cn.Close();
+            return oficios;
+        }
+
+        public DatosOficio GetDatosEmpelados(string nombre)
+        {
+            SqlParameter paranombre = new SqlParameter("@NOMBRE", nombre);
+            this.com.Parameters.Add(paranombre);
+            this.com.CommandType = CommandType.StoredProcedure;
+            this.com.CommandText = "SP_OFICIO_EMP";
+            this.cn.Open();
+            this.reader = this.com.ExecuteReader();
+            List<OficioEmpleado> empleados = new List<OficioEmpleado>();
+            while (this.reader.Read())
+            {
+                string apellido = this.reader["APELLIDO"].ToString();
+                string oficio = this.reader["OFICIO"].ToString();
+                int salario = int.Parse(this.reader["SALARIO"].ToString());
+                OficioEmpleado empleado = new OficioEmpleado();
+                empleado.Apellido = apellido;
+                empleado.Oficio = oficio;
+                empleado.Salario = salario;
+                empleados.Add(empleado);
+            }
+            this.reader.Close();
+            DatosOficio datos = new DatosOficio();
+            datos.Empleados = empleados;
+
+            this.cn.Close();
+            this.com.Parameters.Clear();
+            return datos;
+        }
+
+        public DatosOficio UpdateEmpleado(string nombre,int incremento)
+        {
+            SqlParameter paranombre = new SqlParameter("@NOMBRE", nombre);
+            SqlParameter paraincremento = new SqlParameter("@INCREMENTO", incremento);
+            this.com.Parameters.Add(paraincremento);
+            this.com.Parameters.Add(paranombre);
+            this.com.CommandType = CommandType.StoredProcedure;
+            this.com.CommandText = "SP_OFICIO_EMP_INCREMENTAR";
+            this.cn.Open();
+            this.reader = this.com.ExecuteReader();
+            List<OficioEmpleado> empleados = new List<OficioEmpleado>();
+            while (this.reader.Read())
+            {
+                int id = int.Parse(this.reader["EMP_NO"].ToString());
+                string apellido = this.reader["APELLIDO"].ToString();
+                string oficio = this.reader["OFICIO"].ToString();
+                int salario = int.Parse(this.reader["SALARIO"].ToString());
+                OficioEmpleado empleado = new OficioEmpleado();
+                empleado.IdEmpleado = id;
+                empleado.Apellido = apellido;
+                empleado.Oficio = oficio;
+                empleado.Salario = salario;
+                empleados.Add(empleado);
+            }
+            this.reader.Close();
+            DatosOficio datos = new DatosOficio();
+            datos.Empleados = empleados;
+
+            this.cn.Close();
+            this.com.Parameters.Clear();
+            return datos;
+        }
+
+        public void  DeleteEmpleado(int id)
+        {
+            SqlParameter pamid = new SqlParameter("@IDEMPLEADO", id);
+            this.com.Parameters.Add(pamid);
+            this.com.CommandType = CommandType.StoredProcedure;
+            this.com.CommandText = "SP_OFICIO_EMP_ELIMINAR";
+            this.cn.Open();
+            this.reader = this.com.ExecuteReader();
+            this.cn.Close();
+            this.reader.Close();
+            this.com.Parameters.Clear();
+        }
+
+
     }
 }
