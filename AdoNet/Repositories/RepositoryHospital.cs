@@ -140,10 +140,12 @@ namespace AdoNet.Repositories
             List<OficioEmpleado> empleados = new List<OficioEmpleado>();
             while (this.reader.Read())
             {
+                int id = int.Parse(this.reader["EMP_NO"].ToString());
                 string apellido = this.reader["APELLIDO"].ToString();
                 string oficio = this.reader["OFICIO"].ToString();
                 int salario = int.Parse(this.reader["SALARIO"].ToString());
                 OficioEmpleado empleado = new OficioEmpleado();
+                empleado.IdEmpleado = id;
                 empleado.Apellido = apellido;
                 empleado.Oficio = oficio;
                 empleado.Salario = salario;
@@ -171,12 +173,10 @@ namespace AdoNet.Repositories
             List<OficioEmpleado> empleados = new List<OficioEmpleado>();
             while (this.reader.Read())
             {
-                int id = int.Parse(this.reader["EMP_NO"].ToString());
                 string apellido = this.reader["APELLIDO"].ToString();
                 string oficio = this.reader["OFICIO"].ToString();
                 int salario = int.Parse(this.reader["SALARIO"].ToString());
                 OficioEmpleado empleado = new OficioEmpleado();
-                empleado.IdEmpleado = id;
                 empleado.Apellido = apellido;
                 empleado.Oficio = oficio;
                 empleado.Salario = salario;

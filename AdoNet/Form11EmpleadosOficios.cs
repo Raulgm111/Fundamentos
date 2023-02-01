@@ -38,16 +38,7 @@ namespace AdoNet
 
         private void comboOficios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.comboOficios.SelectedIndex != -1)
-            {
-                string nombreOficio = this.comboOficios.SelectedItem.ToString();
-                 this.datos = this.repo.GetDatosEmpelados(nombreOficio);
-                this.listEmpleados.Items.Clear();
-                foreach (OficioEmpleado oficio in datos.Empleados)
-                {
-                    this.listEmpleados.Items.Add(oficio.Apellido + " - " + oficio.Oficio + " - " + oficio.Salario);
-                }
-            }
+            this.LoadEmpleados();
         }
 
         private void btnIncrementar_Click(object sender, EventArgs e)
@@ -67,8 +58,23 @@ namespace AdoNet
             int id = this.listEmpleados.SelectedIndices[0];
             int borrado = this.datos.Empleados[id].IdEmpleado;
             this.repo.DeleteEmpleado(borrado);
+            this.listEmpleados.Clear();
+            this.LoadEmpleados();
 
+        }
 
+        private void LoadEmpleados()
+        {
+            if (this.comboOficios.SelectedIndex != -1)
+            {
+                string nombreOficio = this.comboOficios.SelectedItem.ToString();
+                this.datos = this.repo.GetDatosEmpelados(nombreOficio);
+                this.listEmpleados.Items.Clear();
+                foreach (OficioEmpleado oficio in datos.Empleados)
+                {
+                    this.listEmpleados.Items.Add(oficio.Apellido + " - " + oficio.Oficio + " - " + oficio.Salario);
+                }
+            }
         }
     }
     }
