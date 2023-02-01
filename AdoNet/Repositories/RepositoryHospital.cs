@@ -10,6 +10,7 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Diagnostics.Metrics;
 using System.Windows.Forms;
 using Microsoft.Extensions.Configuration;
+using AdoNet.Helpers;
 
 namespace AdoNet.Repositories
 {
@@ -45,15 +46,12 @@ namespace AdoNet.Repositories
         
         public RepositoryHospital()
         {
-            IConfigurationBuilder builder= new ConfigurationBuilder().AddJsonFile("config.json",true,true);
-            IConfigurationRoot config=builder.Build();
-
-            string connectionString =
-                "Data Source=LOCALHOST\\DESARROLLO;Initial Catalog=HOSPITAL;Persist Security Info=True;User ID=SA;Password=MCSD2023";
+            string connectionString =HelperConfiguration.GetConnectionString();
             this.cn = new SqlConnection(connectionString);
             this.com = new SqlCommand();
             this.com.Connection = cn;
         }
+
 
         //NECESITMAOS UN METODO PARA DEVOLVER TODOS LOS HOSPITALES
         public List<string> GetHospitales()
