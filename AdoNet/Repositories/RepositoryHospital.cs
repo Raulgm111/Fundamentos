@@ -74,7 +74,7 @@ namespace AdoNet.Repositories
             }
             this.reader.Close();
             DatosHospital datos=new DatosHospital();
-            //datos.empleados = empleados;
+            datos.Empleados = empleados;
             datos.SumaSalarial = int.Parse(pamsuma.Value.ToString());
             datos.MediaSalarial = int.Parse(pammedia.Value.ToString());
             datos.Personas = int.Parse(pampersonas.Value.ToString());

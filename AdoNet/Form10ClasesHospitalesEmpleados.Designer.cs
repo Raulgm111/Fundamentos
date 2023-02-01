@@ -113,6 +113,7 @@
             this.comboHospitales.Name = "comboHospitales";
             this.comboHospitales.Size = new System.Drawing.Size(200, 23);
             this.comboHospitales.TabIndex = 22;
+            this.comboHospitales.SelectedIndexChanged += new System.EventHandler(this.comboHospitales_SelectedIndexChanged);
             // 
             // label1
             // 
